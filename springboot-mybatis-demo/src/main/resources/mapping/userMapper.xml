@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcb.springbootmybatisdemo.dao.IUserDao">
+
+    <!-- 通用的sql -->
+    <sql id="user">
+        id as id,
+        nick_name as nickName,
+        account as account,
+        password as password,
+        tel as tel
+    </sql>
+
+    <!-- 结果集映射 -->
+    <resultMap id="BaseResultMap" type="com.zcb.springbootmybatisdemo.model.User" >
+        <id column="id" property="id"  />
+        <result column="nick_name" property="nickName" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="tel" property="tel" />
+    </resultMap>
+
+    <!-- 查询全部用户 -->
+    <select id="listUsers" resultMap="BaseResultMap">
+        select
+          <include refid="user"/>
+         from t_user
+    </select>
+
+    <!-- 根据id查询信息 -->
+    <select id="getUserById" parameterType="Long" resultType="com.zcb.springbootmybatisdemo.model.User" >
+        select * from t_user where id = #{id}
+    </select>
+
+</mapper>
