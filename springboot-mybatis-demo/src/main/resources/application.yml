@@ -8,7 +8,7 @@ spring:
     name: springboots
     url: jdbc:mysql://127.0.0.1:3306/springboots
     username: root
-    password: biao15116632012
+    password: ######
     filters: stat
     maxActive: 20
     initialSize: 1
